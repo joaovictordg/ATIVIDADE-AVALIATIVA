@@ -1,0 +1,85 @@
+#include <iostream>
+  #include <fstream>
+
+  using namespace std;
+  char resp1,resp2='s';
+  float r1,r2,v1;
+  int cont=0;
+
+  int main() {
+    ofstream saida;
+    ifstream entrada;
+    float num;
+  
+
+
+while( resp2 == 's'){
+    cout<<"Deseja gravar ou ler no banco de dados? Gravar (g) / Ler (l)"<<endl;
+    cin>>resp1;
+    if (resp1== 'l'){
+       entrada.open("arquivo.txt", ios::in);
+    while(!entrada.eof())
+    {
+    entrada>>num;
+    if (cont==0){
+    cout << "resistencia em serie:" << num << endl ;
+    }
+    if (cont==1){
+    cout << "resistencia paralelo:" << num << endl ;
+    }
+    if (cont==2){
+    cout << "corrente:" << num << endl ;
+    }
+    if (cont==3){
+    cout << "potencia:" << num << endl ;
+    }
+    cont++;
+    }
+  
+    entrada.close();
+
+    }
+    if(resp1=='g'){
+    
+      cout<<"Digite r1"<< endl;
+      cin >> r1;
+      cout<<"Digite r2"<< endl;
+      cin >> r2;
+      cout<<"Digite tensao"<< endl;
+      cin >> v1;
+    
+         saida.open("arquivo.txt", ios::out);
+    saida << r1+r2 << endl << (r1*r2)/(r1+r2) << endl <<  v1 * v1/(r1+r2) << endl << v1*(v1/(r1+r2));
+    saida.close();
+
+  
+  
+      cout<<"Dados registrados"<<endl;
+    }
+     cout<<"Deseja continuar no programa? Sim (S) / Não (N)"<<endl;
+    cin>>resp2;
+}
+  
+
+    entrada.open("arquivo.txt", ios::in);
+    while(!entrada.eof())
+    {
+    entrada>>num;
+    if (cont==0){
+    cout << "resistencia em serie:" << num << endl ;
+    }
+    if (cont==1){
+    cout << "resistencia paralelo:" << num << endl ;
+    }
+    if (cont==2){
+    cout << "corrente:" << num << endl ;
+    }
+    if (cont==3){
+    cout << "potencia:" << num << endl ;
+    }
+    cont++;
+    }
+  
+    entrada.close();
+    
+  }
